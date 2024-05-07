@@ -22,6 +22,7 @@ export class BooksService {
     return this.http.get<any[]>(`${this.apiUrl}books`);
   }
   getBook(id:any): Observable<any>{
+    console.log(`API: ${this.apiUrl}books/${id}`);
     return this.http.get<any>(`${this.apiUrl}books/${id}`);
   }
 }
