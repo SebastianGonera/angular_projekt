@@ -1,0 +1,27 @@
+@if (errorMessage != "") {
+    <p>{{errorMessage}}</p>
+  }
+  <table>
+    <tr>
+        <th>Title</th>
+        <th>ISBN</th>
+        <th>Pages</th>
+        <th>Categories</th>
+        <th>Published</th>
+        <th>     </th>
+    </tr>
+   
+      @for (item of book; track item._id) {
+        <tr>
+        <td>{{item.title}}</td>
+        <td>{{item.isbn}}</td>
+        <td>{{item.pages}}</td>
+        <td>{{item.categories}}</td>
+        <td>{{item.published}}</td>
+        <td><button><a routerLink="/book/{{item._id}}">View Details</a></button>
+        </td>
+      </tr>
+      }
+  
+  
+  </table>

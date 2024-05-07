@@ -2,27 +2,7 @@
   SocialBook!
 </h1>
 <p>Author: Gonera Sebastian</p>
-
-@if (errorMessage != "") {
-  <p>{{errorMessage}}</p>
-}
-<table>
-  <tr>
-      <th>Title</th>
-      <th>ISBN</th>
-      <th>Pages</th>
-      <th>Categories</th>
-      <th>Published</th>
-      <th></th>
-  </tr>
-  <tr>
-    @for (item of books; track item) {
-      <td>{{item.title}}</td>
-      <td>{{item.isbn}}</td>
-      <td>{{item.categories}}</td>
-      <td>{{item.published}}</td>
-      <td><button>Edit</button></td>
-    }
-  </tr>
-
-</table>
+<nav>
+  <a routerLink="/books">Books</a>
+</nav>
+<router-outlet></router-outlet>
