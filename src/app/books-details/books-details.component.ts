@@ -19,9 +19,7 @@ ngOnInit(){
   this.bookId = this.route.snapshot.paramMap.get('id');
   this.book_service.getBook(this.bookId).subscribe({
     next:(data)=>{
-      console.log(data);
       this.book = data.book;
-      console.log(this.book);
     }
   });
 }
