@@ -21,14 +21,14 @@ interface Book{
   styleUrl: './books-all.component.css'
 })
 export class BooksAllComponent {
-  book: any[]|null = [];
+  books: any[]|null = [];
   errorMessage:string = "";
   constructor(private data: BooksService){}
   ngOnInit(){
     this.data.getAllBooks().subscribe({
       next:(res)=>{
         let obj = Object.values(res);
-        this.book = obj[0];
+        this.books = obj[0];
       },
       error:(err)=>{
         this.errorMessage=err;

@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>First & Last Name</th>
+        <th>E-mail</th>
+        <th>Address</th>
+        <th>   </th>
+    </tr>
+    @for (item of authors; track item._id) {
+        <tr>
+            <td>{{item.fullName}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.address}}</td>
+            <!-- <td><button><a routerLink="/author/{{item._id}}">View Details</a></button> -->
+        </tr>
+    }
+</table>
