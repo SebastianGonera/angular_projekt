@@ -1,16 +1,19 @@
 @if (errorMessage != "") {
     <p>{{errorMessage}}</p>
   }
-  <table>
-    <tr>
+<div className="overflow-x-auto">
+  <table className="table table-zebra">
+    <thead>
+      <tr>
         <th>Title</th>
         <th>ISBN</th>
         <th>Pages</th>
         <th>Categories</th>
         <th>Published</th>
         <th>     </th>
-    </tr>
-   
+      </tr>
+    </thead>
+    <tbody>
       @for (item of books; track item._id) {
         <tr>
         <td>{{item.title}}</td>
@@ -18,10 +21,10 @@
         <td>{{item.pages}}</td>
         <td>{{item.categories}}</td>
         <td>{{item.published}}</td>
-        <td><button><a routerLink="/book/{{item._id}}">View Details</a></button>
+        <td><button class="btn btn-primary"><a routerLink="/book/{{item._id}}">View Details</a></button>
         </td>
       </tr>
       }
-  
-  
+    </tbody>
   </table>
+</div>
