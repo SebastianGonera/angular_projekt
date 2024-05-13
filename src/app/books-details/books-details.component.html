@@ -1,8 +1,14 @@
-<h1>{{book.title}}</h1>
-<p>{{book.isbn}}</p>
-<p>{{book.description}}</p>
-<p>{{book.pages}}</p>
-<p>{{book.description}}</p>
-<p>{{book.categories}}</p>
-<p>{{book.published}}</p>
-<button><a routerLink="/books">Back to books</a></button>
+<div class="card w-96 bg-base-100 shadow-xl">
+    <figure><img src="" /></figure>
+    <div class="card-body">
+        <h2 class="card-title">{{book.title}}</h2>
+        <p>{{book.description}}</p>
+        <p class="font-semibold">ISBN: {{book.isbn}}</p>
+        <p class="font-semibold">Number of pages: {{book.pages}}</p>
+        <p class="font-semibold">Category: {{book.categories}}</p>
+        <p class="font-semibold">Published: {{book.published}}</p>
+        <div class="card-actions justify-end">
+            <button class="btn btn-active"><a routerLink="/books">Back to books</a></button>
+        </div>
+    </div>
+</div>
