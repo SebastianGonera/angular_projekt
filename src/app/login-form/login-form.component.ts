@@ -35,7 +35,6 @@ export class LoginFormComponent {
       //console.log(test._id);
       localStorage.setItem("user_id", test._id);
       localStorage.setItem("token", JSON.stringify(obj[0]));
-      this.users_service.showFavoriteAuthors();
     });
    
   }

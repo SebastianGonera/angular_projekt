@@ -25,13 +25,4 @@ export class UsersService {
     };
     return this.http.post<any>(`${this.apiUrl}users/signin`, user, httpOptions);
   }
-  showFavoriteAuthors(){
-    console.log(localStorage.getItem("user_id"));
-    // const httpOptions ={
-    //   headers: new HttpHeaders({
-    //     'Authorization': `${localStorage.getItem("token")}`
-    //   })
-    // };
-    // return this.http.get<any>(`${this.apiUrl}users/favorite_authors/${localStorage.getItem("user_id")}`, httpOptions);
-  }
 }

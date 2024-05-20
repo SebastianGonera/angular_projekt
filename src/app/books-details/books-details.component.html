@@ -1,5 +1,5 @@
 <div class="card w-96 bg-base-100 shadow-xl">
-    <figure><img src="" /></figure>
+    <figure><img src={{book.cover}} /></figure>
     <div class="card-body">
         <h2 class="card-title">{{book.title}}</h2>
         <p>{{book.description}}</p>
@@ -9,6 +9,7 @@
         <p class="font-semibold">Published: {{book.published}}</p>
         <div class="card-actions justify-end">
             <button class="btn btn-active"><a routerLink="/books">Back to books</a></button>
+            <button class="btn btn-secondary"><a routerLink="/books/edit/{{book._id}}">Edit</a> </button>
         </div>
     </div>
 </div>
