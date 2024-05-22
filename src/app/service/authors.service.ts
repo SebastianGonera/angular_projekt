@@ -28,5 +28,18 @@ export class AuthorsService {
     return this.http
     .put<any>(`${this.apiUrl}authors/update/${authorId}`, editedAuthor, httpOptions);
   }
+
+  addAuthor(newAuthor: any): Observable<any>{
+    const tokenString = localStorage.getItem('token');
+    const userToken = tokenString ? JSON.parse(tokenString) : null;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${userToken}`,
+        'Content-Type': 'application/json',
+      })
+    };
+    return this.http
+    .post<any>(`${this.apiUrl}authors/add`, newAuthor, httpOptions);
+  }
 }
 

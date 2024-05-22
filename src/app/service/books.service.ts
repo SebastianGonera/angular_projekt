@@ -52,4 +52,17 @@ export class BooksService {
     formData.append('file', cover, cover.name);
     return this.http.post<any>(`${this.apiUrl}upload/`, formData, httpOptions);
   }
+
+  addBook(newBook: any): Observable<any>{
+    const tokenString = localStorage.getItem('token');
+    const userToken = tokenString ? JSON.parse(tokenString) : null;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${userToken}`,
+        'Content-Type': 'application/json',
+      })
+    };
+    return this.http
+    .post<any>(`${this.apiUrl}books/add`, newBook, httpOptions);
+  }
 }

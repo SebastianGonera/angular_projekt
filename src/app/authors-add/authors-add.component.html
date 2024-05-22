@@ -1,0 +1,55 @@
+<p>authors-add works!</p>
+<div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">Edit book</h2>
+        <form class="card-body" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Full Name</span>
+                </label>
+                <input type="text" placeholder="fullName" formControlName="fullName" class="input input-bordered"
+                   />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Age</span>
+                </label>
+                <input type="number" maxlength="2" placeholder="age" formControlName="age" class="input input-bordered"
+                     />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">E-mail</span>
+                </label>
+                <input type="text" placeholder="e-mail" formControlName="email" class="input input-bordered"
+                     />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Address</span>
+                </label>
+                <input type="text" placeholder="address" formControlName="address" class="input input-bordered"
+                    />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">About</span>
+                </label>
+                <textarea placeholder="about" formControlName="about" class="input input-bordered"
+                   rows="6" cols="50">
+            </textarea>
+            </div>
+
+            <div class="card-actions justify-end">
+                <div class="form-control mt-6">
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
