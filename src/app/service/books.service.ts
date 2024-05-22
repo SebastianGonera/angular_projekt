@@ -16,8 +16,8 @@ interface Book {
   providedIn: 'root'
 })
 export class BooksService {
-  //apiUrl = 'https://expressapi-eetf.onrender.com/api/';
-  apiUrl = 'http://localhost:5000/api/';
+  apiUrl = 'https://expressapi-eetf.onrender.com/api/';
+  //apiUrl = 'http://localhost:5000/api/';
   constructor(private http: HttpClient) { }
   getAllBooks(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}books`);

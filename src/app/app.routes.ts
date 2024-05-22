@@ -6,12 +6,14 @@ import { AuthorsDetailsComponent } from "./authors-details/authors-details.compo
 import { RegisterFormComponent } from "./register-form/register-form.component";
 import { LoginFormComponent } from "./login-form/login-form.component";
 import {BooksEditComponent} from "./books-edit/books-edit.component";
+import { AuthorsEditComponent } from "./authors-edit/authors-edit.component";
 export const routes: Routes = [
     {path: 'books', component: BooksAllComponent},
     {path:'book/:id', component: BooksDetailsComponent},
     {path:'books/edit/:id', component: BooksEditComponent},
     {path: 'authors', component:AuthorsAllComponent},
     {path: 'author/:id', component:AuthorsDetailsComponent},
+    {path: 'authors/edit/:id', component:AuthorsEditComponent},
     {path: 'signup', component:RegisterFormComponent},
     {path:'signin', component: LoginFormComponent}
   ];

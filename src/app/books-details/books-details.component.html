@@ -10,6 +10,12 @@
         <div class="card-actions justify-end">
             <button class="btn btn-active"><a routerLink="/books">Back to books</a></button>
             <button class="btn btn-secondary"><a routerLink="/books/edit/{{book._id}}">Edit</a> </button>
+            @if (hasBook) {
+                <button class="btn btn-error" (click)="removeFavoriteBook()">Delete from favorite</button>
+            }
+            @else {
+                <button class="btn btn-success" (click)="addFavoriteBook()">Add to favorite</button>
+            }
         </div>
     </div>
 </div>

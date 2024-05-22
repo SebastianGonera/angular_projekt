@@ -13,7 +13,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class BooksEditComponent {
   selectedFile: File | null = null;
-  authors: any[]= [];
+  authors: any[] = [];
   all_authors: any[] = [];
   book: any | null = null;
   bookId: string | null = null;
@@ -24,7 +24,8 @@ export class BooksEditComponent {
     categories: new FormControl(''),
     description: new FormControl(''),
     authors: new FormControl(),
-    published: new FormControl('')  });
+    published: new FormControl('')
+  });
 
   constructor(
     private book_service: BooksService,
@@ -58,21 +59,21 @@ export class BooksEditComponent {
     });
   }
 
-  onFileSelected(event: Event){
-    const input= event.target as HTMLInputElement;
-    if(input.files) this.selectedFile = input.files[0];
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files) this.selectedFile = input.files[0];
   }
   async onSubmit() {
     console.log(this.editForm.value);
     let cover = "";
-    if(this.selectedFile){
+    if (this.selectedFile) {
       const data = await firstValueFrom(this.book_service.uploadCover(this.selectedFile));
       cover = data.secure_url;
     }
 
-    
+
     let author = this.editForm.get("authors")?.value;
-    let author_id = this.all_authors.filter(a=> a.fullName == author);
+    let author_id = this.all_authors.filter(a => a.fullName == author);
     this.book.authors[0] = author_id[0]._id;
     let edited_book = {
       "title": this.editForm.get("title")?.value,

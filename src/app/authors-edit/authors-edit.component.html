@@ -1,1 +1,54 @@
-<p>authors-edit works!</p>
+<div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">Edit book</h2>
+        <form class="card-body" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Full Name</span>
+                </label>
+                <input type="text" placeholder="fullName" formControlName="fullName" class="input input-bordered"
+                    [(ngModel)]="author.fullName" />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Age</span>
+                </label>
+                <input type="number" maxlength="10" placeholder="age" formControlName="age" class="input input-bordered"
+                    [(ngModel)]="author.age" />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">E-mail</span>
+                </label>
+                <input type="text" placeholder="e-mail" formControlName="email" class="input input-bordered"
+                    [(ngModel)]="author.email" />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Address</span>
+                </label>
+                <input type="text" placeholder="address" formControlName="address" class="input input-bordered"
+                    [(ngModel)]="author.address" />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">About</span>
+                </label>
+                <textarea placeholder="about" formControlName="about" class="input input-bordered"
+                    [(ngModel)]="author.about" rows="6" cols="50">
+            </textarea>
+            </div>
+
+            <div class="card-actions justify-end">
+                <div class="form-control mt-6">
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

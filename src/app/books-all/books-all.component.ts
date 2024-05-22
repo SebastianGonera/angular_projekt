@@ -1,16 +1,6 @@
 import { Component } from '@angular/core';
 import { BooksService } from "../service/books.service";
 import { RouterModule, RouterOutlet } from '@angular/router';
-interface Book{
-  _id?:string,
-  title: string,
-  isbn : string,
-  pages: number,
-  categories: string ,
-  description: string,
-  published: string,
-  authors: string[]
-}
 
 
 @Component({

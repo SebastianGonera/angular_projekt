@@ -29,10 +29,9 @@ export class LoginFormComponent {
     console.log(this.loginForm.value);
     this.users_service.loginUser(this.loginForm.value)
     .subscribe(data=>{
-      console.log(Object.values(data));
+     console.log(Object.values(data));
       let obj = Object.values(data);
       let test : User = obj[1] as User;
-      //console.log(test._id);
       localStorage.setItem("user_id", test._id);
       localStorage.setItem("token", JSON.stringify(obj[0]));
     });
