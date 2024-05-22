@@ -80,4 +80,56 @@ export class UsersService {
     const userId = localStorage.getItem("user_id");
     return this.http.get<any>(`${this.apiUrl}users/favorite_books/${userId}`, httpOptions);
   }
+
+  getFavoriteAuthors():Observable<any>{
+    const tokenString = localStorage.getItem('token');
+    const userToken = tokenString ? JSON.parse(tokenString) : null;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${userToken}`,
+        'Content-Type': 'application/json',
+
+      })
+    };
+    const userId = localStorage.getItem("user_id");
+    return this.http.get<any>(`${this.apiUrl}users/favorite_authors/${userId}`, httpOptions);
+  }
+
+  addFavoriteAuthor(authorId: any):Observable<any>{
+    const tokenString = localStorage.getItem('token');
+    const userToken = tokenString ? JSON.parse(tokenString) : null;
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${userToken}`,
+        'Content-Type': 'application/json',
+
+      })
+    };
+    const userId = localStorage.getItem("user_id");
+    const id ={
+      "userId": userId
+    }
+    return this.http
+    .put<any>(`${this.apiUrl}users/add_favorite_author/${authorId}`, id, httpOptions);
+  }
+
+  removeFavoriteAuthor(authorId: any):Observable<any>{
+    const tokenString = localStorage.getItem('token');
+    const userToken = tokenString ? JSON.parse(tokenString) : null;
+    const userId = localStorage.getItem("user_id");
+    const id ={
+      "userId": userId
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${userToken}`,
+        'Content-Type': 'application/json',
+      }
+    ),
+    body: id
+    };
+   
+    return this.http
+    .delete<any>(`${this.apiUrl}users/remove_favorite_author/${authorId}`, httpOptions);
+  }
 }

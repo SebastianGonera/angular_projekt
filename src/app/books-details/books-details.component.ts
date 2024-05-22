@@ -3,16 +3,6 @@ import { BooksService } from "../service/books.service";
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UsersService } from "../service/users.service";
 import { firstValueFrom } from 'rxjs';
-interface Book{
-  _id?:string,
-  title: string,
-  isbn : string,
-  pages: number,
-  categories: string ,
-  description: string,
-  published: string,
-  authors: string[]
-}
 
 
 @Component({
