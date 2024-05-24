@@ -8,8 +8,9 @@ import { LoginFormComponent } from "./login-form/login-form.component";
 import {BooksEditComponent} from "./books-edit/books-edit.component";
 import { AuthorsEditComponent } from "./authors-edit/authors-edit.component";
 import {AuthorsAddComponent} from "./authors-add/authors-add.component";
-
+import { HomeComponent } from "./home/home.component";
 export const routes: Routes = [
+  {path: 'home', component: HomeComponent},
     {path: 'books', component: BooksAllComponent},
     {path:'book/:id', component: BooksDetailsComponent},
     {path:'books/edit/:id', component: BooksEditComponent},

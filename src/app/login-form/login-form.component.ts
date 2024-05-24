@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { UsersService } from "../service/users.service";
+import { Router, RouterModule } from '@angular/router';
 
 interface User{
   _id: string,
@@ -13,7 +14,7 @@ interface User{
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css'
 })
@@ -24,7 +25,9 @@ export class LoginFormComponent {
   });
 
   submitted:boolean = false;
-  constructor(private users_service: UsersService){}
+  constructor(private users_service: UsersService,
+    private router: Router
+  ){}
   onSubmit(){
     console.log(this.loginForm.value);
     this.users_service.loginUser(this.loginForm.value)
@@ -33,7 +36,11 @@ export class LoginFormComponent {
       let obj = Object.values(data);
       let test : User = obj[1] as User;
       localStorage.setItem("user_id", test._id);
+      localStorage.setItem("username", test.username);
+      localStorage.setItem("user_email", test.email);
+      localStorage.setItem("user_isAdmin", test.isAdmin.toString());
       localStorage.setItem("token", JSON.stringify(obj[0]));
+      this.router.navigate(['home']);
     });
    
   }
