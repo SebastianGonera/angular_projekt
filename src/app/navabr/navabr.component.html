@@ -8,12 +8,15 @@
         <li><a routerLink="/authors">Authors</a></li>
         @if (hasLogin) {
           <li>
-            <details>
+            <details class="z-20">
               <summary>
                 {{username}}
               </summary>
-              <ul class="p-2 bg-base-100 rounded-t-none">
+              <ul class="p-1 bg-base-100 rounded-t-none">
                 <li (click)="logOut()"><a routerLink="#">Logout</a></li>
+                <li (click)="deleteAccount()"><a class="bg-error">Delete Account</a></li>
+                <li><a routerLink="/fav_authors">Fav Authors</a></li>
+                <li><a routerLink="/fav_books">Fav Books</a></li>
               </ul>
             </details>
           </li>

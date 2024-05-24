@@ -9,8 +9,11 @@ import {BooksEditComponent} from "./books-edit/books-edit.component";
 import { AuthorsEditComponent } from "./authors-edit/authors-edit.component";
 import {AuthorsAddComponent} from "./authors-add/authors-add.component";
 import { HomeComponent } from "./home/home.component";
+import { UserDetailsComponent } from "./user-details/user-details.component";
+import { UserFavAuthorsComponent } from "./user-fav-authors/user-fav-authors.component";
+import { UserFavBooksComponent } from "./user-fav-books/user-fav-books.component";
 export const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+    {path: 'home', component: HomeComponent},
     {path: 'books', component: BooksAllComponent},
     {path:'book/:id', component: BooksDetailsComponent},
     {path:'books/edit/:id', component: BooksEditComponent},
@@ -19,6 +22,9 @@ export const routes: Routes = [
     {path: 'authors/edit/:id', component:AuthorsEditComponent},
     {path: 'authors/add', component: AuthorsAddComponent},
     {path: 'signup', component:RegisterFormComponent},
-    {path:'signin', component: LoginFormComponent}
+    {path:'signin', component: LoginFormComponent},
+    {path: 'fav_authors', component: UserFavAuthorsComponent},
+    {path: 'fav_books', component: UserFavBooksComponent},
+    
   ];
   

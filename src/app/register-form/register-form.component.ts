@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
 import { UsersService } from "../service/users.service";
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css'
 })
@@ -15,18 +16,16 @@ export class RegisterFormComponent {
     email: new FormControl(''),
     password: new FormControl(''),
   });
-  created: boolean = false;
-  submitted: boolean = false;
 
-  constructor(private users_service: UsersService) { }
+  constructor(private users_service: UsersService,  private router: Router) { }
   onSubmit() {
-    this.submitted = true;
     console.log(this.registerForm.value);
     this.users_service.registerUser(this.registerForm.value)
     .subscribe(mess =>{
       if (Object.values(mess).toString() == "User created successfully") {
         console.log(mess);
-        this.created = true;
+        this.router.navigate(['home']);
+      
       }
   
     });

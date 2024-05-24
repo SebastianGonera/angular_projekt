@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { UsersService } from '../service/users.service';
+
 @Component({
   selector: 'app-navabr',
   standalone: true,
@@ -10,6 +12,11 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 export class NavabrComponent {
   hasLogin: boolean = false;
   username: string | null = "";
+
+  constructor(private user_service: UsersService,
+    private router: Router
+  ){}
+
   ngOnInit(){
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('user_id');
@@ -22,8 +29,22 @@ export class NavabrComponent {
     }
   }
 
+  deleteAccount(){
+    this.user_service.deleteUser().subscribe({
+      next: (data)=>{
+        console.log(data);
+        if(Object.values(data)){
+          
+          localStorage.clear();
+         window.location.reload();
+        }
+      }
+    });
+  }
+
   logOut(){
     this.hasLogin = false;
     localStorage.clear();
+    window.location.reload();
   }
 }

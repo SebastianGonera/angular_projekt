@@ -14,12 +14,20 @@ export class AuthorsDetailsComponent {
   author: any | null = null;
   authorId: string | null = null;
   hasAuthor: boolean = false;
+  hasLogged: boolean = false;
 
   constructor(private author_service: AuthorsService,
     private route: ActivatedRoute,
     private user_service: UsersService
   ){}
   ngOnInit(){
+    const token = localStorage.getItem('token');
+    if(token){
+      this.hasLogged = true;
+    }
+    else{
+      this.hasLogged = false;
+    }
     this.authorId = this.route.snapshot.paramMap.get('id');
     this.author_service.getAuthor(this.authorId).subscribe({
       next:(data)=>{
@@ -44,7 +52,6 @@ export class AuthorsDetailsComponent {
   }
   
   addFavoriteAuthor(){
-    //console.log("Dziala addFav");
     this.user_service.addFavoriteAuthor(this.authorId).subscribe({
       next: (data) =>{
         if(Object.values(data)){
@@ -55,7 +62,6 @@ export class AuthorsDetailsComponent {
   }
   
   removeFavoriteAuthor(){
-    //console.log("Działa remove");
     this.user_service.removeFavoriteAuthor(this.authorId).subscribe({
       next: (data)=>{
         if(Object.values(data)){

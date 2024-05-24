@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BooksService } from "../service/books.service";
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UsersService } from "../service/users.service";
-import { firstValueFrom } from 'rxjs';
+
 
 
 @Component({
@@ -16,6 +16,7 @@ export class BooksDetailsComponent {
 book: any | null = null;
 bookId: string|null = null;
 hasBook: boolean = false;
+hasLogged: boolean = false;
 constructor(
   private book_service: BooksService,
   private user_service: UsersService,
@@ -24,6 +25,13 @@ constructor(
 
 
 ngOnInit(){
+  const token = localStorage.getItem('token');
+    if(token){
+      this.hasLogged = true;
+    }
+    else{
+      this.hasLogged = false;
+    }
   this.bookId = this.route.snapshot.paramMap.get('id');
   this.book_service.getBook(this.bookId).subscribe({
     next:(data)=>{

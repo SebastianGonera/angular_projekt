@@ -7,14 +7,17 @@
         <p class="font-semibold">Address: {{author.address}}</p>
         <div class="card-actions justify-end">
             <button class="btn btn-active"><a routerLink="/authors">Back to authors</a></button>
-            <button class="btn btn-secondary"><a routerLink="/authors/edit/{{author._id}}">Edit</a>
-            </button>
-            @if (hasAuthor) {
-                <button class="btn btn-error" (click)="removeFavoriteAuthor()">Delete from favorite</button>
+            @if(hasLogged){
+                <button class="btn btn-secondary"><a routerLink="/authors/edit/{{author._id}}">Edit</a>
+                </button>
+                @if (hasAuthor) {
+                    <button class="btn btn-error" (click)="removeFavoriteAuthor()">Delete from favorite</button>
+                }
+                @else {
+                    <button class="btn btn-success" (click)="addFavoriteAuthor()">Add to favorite</button>
+                }
             }
-            @else {
-                <button class="btn btn-success" (click)="addFavoriteAuthor()">Add to favorite</button>
-            }
+          
         </div>
     </div>
 </div>

@@ -41,6 +41,7 @@ export class LoginFormComponent {
       localStorage.setItem("user_isAdmin", test.isAdmin.toString());
       localStorage.setItem("token", JSON.stringify(obj[0]));
       this.router.navigate(['home']);
+    
     });
    
   }
