@@ -1,12 +1,11 @@
 <div class="overflow-x-auto">
     @if(hasLogged){
-    <button class="btn btn-neutral"><a routerLink="/authors/add">Add author</a></button>
+    <button class="btn bg-sky-700"><a routerLink="/authors/add">Add author</a></button>
     }
     <table class="table table-zebra">
         <thead>
             <tr>
                 <th>First & Last Name</th>
-                <th>E-mail</th>
                 <th>Address</th>
                 <th> </th>
             </tr>
@@ -15,7 +14,6 @@
             @for (item of authors; track item._id) {
             <tr>
                 <td>{{item.fullName}}</td>
-                <td>{{item.email}}</td>
                 <td>{{item.address}}</td>
                 <td><button class="btn btn-primary"><a routerLink="/author/{{item._id}}">View Details</a></button>
             </tr>

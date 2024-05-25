@@ -1,6 +1,6 @@
-<div class="card w-96 bg-base-100 shadow-xl">
+<div class="card w-96 bg-base-300 shadow-xl card-bordered  mx-auto my-10">
     <div class="card-body">
-        <h2 class="card-title">Edit book</h2>
+        <h2 class="card-title">Add book</h2>
         <form class="card-body" [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
             <div class="form-control">
@@ -71,7 +71,7 @@
 
             <div class="card-actions justify-end">
                 <div class="form-control mt-6">
-                    <button type="submit" class="btn btn-primary">Confirm</button>
+                    <button type="submit" class="btn bg-sky-700">Confirm</button>
                 </div>
             </div>
         </form>

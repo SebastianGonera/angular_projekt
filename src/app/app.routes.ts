@@ -15,22 +15,24 @@ import { BooksAddComponent } from "./books-add/books-add.component";
 import { UserPasswordComponent } from "./user-password/user-password.component";
 import { UserEditComponent } from "./user-edit/user-edit.component";
 
+import { authGuard } from "./auth.guard";
+
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'books', component: BooksAllComponent},
     {path:'book/:id', component: BooksDetailsComponent},
-    {path:'books/edit/:id', component: BooksEditComponent},
-    {path:'books/add', component:BooksAddComponent},
+    {path:'books/edit/:id', component: BooksEditComponent, canActivate: [authGuard]},
+    {path:'books/add', component:BooksAddComponent, canActivate: [authGuard]},
     {path: 'authors', component:AuthorsAllComponent},
     {path: 'author/:id', component:AuthorsDetailsComponent},
-    {path: 'authors/edit/:id', component:AuthorsEditComponent},
-    {path: 'authors/add', component: AuthorsAddComponent},
+    {path: 'authors/edit/:id', component:AuthorsEditComponent, canActivate: [authGuard]},
+    {path: 'authors/add', component: AuthorsAddComponent, canActivate: [authGuard]},
     {path: 'signup', component:RegisterFormComponent},
     {path:'signin', component: LoginFormComponent},
-    {path: 'fav_authors', component: UserFavAuthorsComponent},
-    {path: 'fav_books', component: UserFavBooksComponent},
-    {path: 'change_password', component: UserPasswordComponent},
-    {path: 'user/edit', component: UserEditComponent}
+    {path: 'fav_authors', component: UserFavAuthorsComponent, canActivate: [authGuard]},
+    {path: 'fav_books', component: UserFavBooksComponent, canActivate: [authGuard]},
+    {path: 'change_password', component: UserPasswordComponent, canActivate: [authGuard]},
+    {path: 'user/edit', component: UserEditComponent, canActivate: [authGuard]}
     
   ];
   
