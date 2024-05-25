@@ -12,9 +12,17 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 })
 export class BooksAllComponent {
   books: any[]|null = [];
+  hasLogged: boolean = false;
   errorMessage:string = "";
   constructor(private data: BooksService){}
   ngOnInit(){
+    const token = localStorage.getItem('token');
+    if(token){
+      this.hasLogged = true;
+    }
+    else{
+      this.hasLogged = false;
+    }
     this.data.getAllBooks().subscribe({
       next:(res)=>{
         let obj = Object.values(res);

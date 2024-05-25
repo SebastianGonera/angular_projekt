@@ -1,0 +1,79 @@
+<div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card-body">
+        <h2 class="card-title">Edit book</h2>
+        <form class="card-body" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Title</span>
+                </label>
+                <input type="text" placeholder="title" formControlName="title" class="input input-bordered"
+                    />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">ISBN</span>
+                </label>
+                <input type="text" maxlength="10" placeholder="isbn" formControlName="isbn" class="input input-bordered"
+                    />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Pages</span>
+                </label>
+                <input type="number" placeholder="pages" formControlName="pages" class="input input-bordered"
+                   />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Category</span>
+                </label>
+                <input type="text" placeholder="category" formControlName="categories" class="input input-bordered"
+                    />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Authors</span>
+                </label>
+                <select class="select select-bordered w-full max-w-xs" formControlName="authors">
+                    @for (author of all_authors; track author._id) {
+                    <option>{{author.fullName}}</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Decsription</span>
+                </label>
+                <textarea placeholder="description" formControlName="description" class="input input-bordered"
+                  rows="6" cols="50">
+            </textarea>
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Published: </span>
+                </label>
+                <input type="date" placeholder="date" formControlName="published" class="input input-bordered" />
+            </div>
+
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text">Cover: </span>
+                </label>
+                <input type="file" (change)="onFileSelected($event)" class="file-input file-input-bordered file-input-accent file-input-md w-full max-w-xs" />
+            </div>
+
+            <div class="card-actions justify-end">
+                <div class="form-control mt-6">
+                    <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

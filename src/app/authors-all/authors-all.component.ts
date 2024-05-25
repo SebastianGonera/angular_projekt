@@ -10,9 +10,17 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   styleUrl: './authors-all.component.css'
 })
 export class AuthorsAllComponent {
+  hasLogged: boolean = false;
   authors: any[]|null = [];
   constructor(private author_service: AuthorsService){}
   ngOnInit(){
+    const token = localStorage.getItem('token');
+    if(token){
+      this.hasLogged = true;
+    }
+    else{
+      this.hasLogged = false;
+    }
     this.author_service.getAllAuthors().subscribe({
       next:(data)=>{
         let obj = Object.values(data);

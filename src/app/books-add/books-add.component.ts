@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
-import { BooksService } from "../service/books.service";
-import { AuthorsService } from "../service/authors.service";
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { BooksService } from '../service/books.service';
+import { AuthorsService } from '../service/authors.service';
+import { Router, RouterModule } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
+
 @Component({
-  selector: 'app-books-edit',
+  selector: 'app-books-add',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule],
-  templateUrl: './books-edit.component.html',
-  styleUrl: './books-edit.component.css'
+  templateUrl: './books-add.component.html',
+  styleUrl: './books-add.component.css'
 })
-export class BooksEditComponent {
+export class BooksAddComponent {
   selectedFile: File | null = null;
-  authors: any[] = [];
-  all_authors: any[] = [];
-  book: any | null = null;
-  bookId: string | null = null;
+  all_authors: any = [];
   editForm: FormGroup = new FormGroup({
     title: new FormControl(''),
     isbn: new FormControl(''),
@@ -27,30 +25,18 @@ export class BooksEditComponent {
     published: new FormControl('')
   });
 
+
   constructor(
     private book_service: BooksService,
     private author_service: AuthorsService,
-    private activated_route: ActivatedRoute,
     private router: Router
   ) { }
+
   ngOnInit() {
-    this.bookId = this.activated_route.snapshot.paramMap.get('id');
-    this.book_service.getBook(this.bookId).subscribe({
-      next: (data) => {
-        this.book = data.book;
-      }
-    });
     this.author_service.getAllAuthors().subscribe({
       next: (data) => {
         let authrs = Object.values(data);
         this.all_authors = authrs[0];
-        for (let i = 0; i < this.book.authors.length; i++) {
-          for (let j = 0; j < authrs[0].length; j++) {
-            if (this.book.authors[i] == authrs[0][j]._id) {
-              this.authors.push(authrs[0][j]);
-            }
-          }
-        }
       }
     });
   }
@@ -59,32 +45,33 @@ export class BooksEditComponent {
     const input = event.target as HTMLInputElement;
     if (input.files) this.selectedFile = input.files[0];
   }
+
   async onSubmit() {
     let cover = "";
     if (this.selectedFile) {
       const data = await firstValueFrom(this.book_service.uploadCover(this.selectedFile));
       cover = data.secure_url;
     }
-
-
     let author = this.editForm.get("authors")?.value;
-    let author_id = this.all_authors.filter(a => a.fullName == author);
-    this.book.authors[0] = author_id[0]._id;
-    let edited_book = {
+    let author_id = this.all_authors.filter((a: any) => a.fullName == author);
+    const authors: any[] = [author_id[0]._id];
+    let new_book = {
       "title": this.editForm.get("title")?.value,
       "isbn": this.editForm.get("isbn")?.value,
       "pages": this.editForm.get("pages")?.value,
       "categories": this.editForm.get("categories")?.value,
       "description": this.editForm.get("description")?.value,
-      "authors": this.book.authors,
+      "authors": authors,
       "published": this.editForm.get("published")?.value,
       "cover": cover
     };
-    this.book_service.editBook(edited_book, this.bookId)
-      .subscribe(data => {
-        if (data) {
-          this.router.navigate([`book/${this.bookId}`]);
-        }
-      });
+    this.book_service.addBook(new_book).subscribe(data => {
+      if (data) {
+        this.router.navigate(['books']);
+      }
+    });
   }
+
+
+
 }
