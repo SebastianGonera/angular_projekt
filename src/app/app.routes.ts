@@ -12,6 +12,8 @@ import { HomeComponent } from "./home/home.component";
 import { UserFavAuthorsComponent } from "./user-fav-authors/user-fav-authors.component";
 import { UserFavBooksComponent } from "./user-fav-books/user-fav-books.component";
 import { BooksAddComponent } from "./books-add/books-add.component";
+import { UserPasswordComponent } from "./user-password/user-password.component";
+import { UserEditComponent } from "./user-edit/user-edit.component";
 
 export const routes: Routes = [
     {path: 'home', component: HomeComponent},
@@ -27,6 +29,8 @@ export const routes: Routes = [
     {path:'signin', component: LoginFormComponent},
     {path: 'fav_authors', component: UserFavAuthorsComponent},
     {path: 'fav_books', component: UserFavBooksComponent},
+    {path: 'change_password', component: UserPasswordComponent},
+    {path: 'user/edit', component: UserEditComponent}
     
   ];
   
