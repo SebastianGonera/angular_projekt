@@ -34,9 +34,7 @@ export class NavabrComponent {
       next: (data)=>{
         console.log(data);
         if(Object.values(data)){
-          
           localStorage.clear();
-         window.location.reload();
         }
       }
     });
@@ -45,6 +43,5 @@ export class NavabrComponent {
   logOut(){
     this.hasLogin = false;
     localStorage.clear();
-    window.location.reload();
   }
 }

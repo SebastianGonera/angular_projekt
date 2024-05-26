@@ -36,13 +36,12 @@ export class UserEditComponent {
     this.user_service.updateUser(editedUser).subscribe({
       next: (data) => {
         const res = Object.values(data);
-        console.log(Object.values(data));
         if (res[0] == "User successfully updated") {
           localStorage.removeItem('token');
           localStorage.setItem('token', JSON.stringify(res[1]));
           localStorage.setItem('username', this.username);
           localStorage.setItem('user_email', this.email);
-          this.router.navigate(['home']);
+          this.router.navigate(['/']);
         }
 
       }

@@ -8,27 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class UsersService {
   apiUrl = 'https://expressapi-eetf.onrender.com/api/';
-  
-  private userSubject = new BehaviorSubject<any>(this.getUserFromStorage());
-  user$ = this.userSubject.asObservable();
 
   constructor(private http: HttpClient) { }
-
-getUserFromStorage(){
-  return{
-    token: localStorage.getItem('token'),
-    userId:  localStorage.getItem('user_id'),
-    username: localStorage.getItem('username'),
-    email:  localStorage.getItem("user_email"),
-    isAdmin: localStorage.getItem("user_isAdmin")
-  }
-}
-
-clearUserStroage(){
-  localStorage.clear();
-  this.userSubject.next(null);
-}
-
 
   registerUser(user: any): Observable<any> {
     const httpOptions = {

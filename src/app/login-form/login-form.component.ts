@@ -29,10 +29,8 @@ export class LoginFormComponent {
     private router: Router
   ){}
   onSubmit(){
-    console.log(this.loginForm.value);
     this.users_service.loginUser(this.loginForm.value)
     .subscribe(data=>{
-     console.log(Object.values(data));
       let obj = Object.values(data);
       let test : User = obj[1] as User;
       localStorage.setItem("user_id", test._id);
@@ -40,8 +38,7 @@ export class LoginFormComponent {
       localStorage.setItem("user_email", test.email);
       localStorage.setItem("user_isAdmin", test.isAdmin.toString());
       localStorage.setItem("token", JSON.stringify(obj[0]));
-      this.router.navigate(['home']);
-    
+      this.router.navigate(['/']);
     });
    
   }

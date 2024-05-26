@@ -18,7 +18,7 @@ import { UserEditComponent } from "./user-edit/user-edit.component";
 import { authGuard } from "./auth.guard";
 
 export const routes: Routes = [
-    {path: 'home', component: HomeComponent},
+    {path: '', component: HomeComponent},
     {path: 'books', component: BooksAllComponent},
     {path:'book/:id', component: BooksDetailsComponent},
     {path:'books/edit/:id', component: BooksEditComponent, canActivate: [authGuard]},

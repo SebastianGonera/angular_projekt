@@ -27,9 +27,8 @@ export class UserPasswordComponent {
     this.user_service.changePassword(pass).subscribe({
       next: (data)=>{
         if(data.message == "Password successfully changed for user"){
-          this.router.navigate(['home']);
+          this.router.navigate(['/']);
         }
-        console.log(data);
       }
     });
   }

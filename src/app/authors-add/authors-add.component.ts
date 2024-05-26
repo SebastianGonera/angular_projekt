@@ -30,7 +30,6 @@ export class AuthorsAddComponent {
       next: (data) => {
         if ((Object.values(data) as unknown as string) == "New author added successfully") {
           this.router.navigate(['authors']);
-
         }
       }
     });

@@ -19,7 +19,4 @@ export class AppComponent {
       this.hasLoaded = true;
     }
   }
-  reloadPage() {
-    window.location.reload();
-  }
 }

@@ -57,8 +57,6 @@ ngOnInit(){
 }
 
 addFavoriteBook(){
-  //console.log("Dziala addFav");
-
   this.user_service.addFavoriteBook(this.bookId).subscribe({
     next: (data) =>{
       if(Object.values(data)){
@@ -69,7 +67,6 @@ addFavoriteBook(){
 }
 
 removeFavoriteBook(){
-  //console.log("Działa remove");
   this.user_service.removeFavoriteBook(this.bookId).subscribe({
     next: (data)=>{
       if(Object.values(data)){

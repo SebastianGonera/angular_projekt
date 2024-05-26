@@ -14,7 +14,6 @@ export class UserFavAuthorsComponent {
   ngOnInit(){
     this.users_service.getFavoriteAuthors().subscribe({
       next: (data)=>{
-        console.log(Object.values(data)[0]);
         this.authors = Object.values(data)[0];
       }
     });

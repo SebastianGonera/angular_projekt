@@ -1,8 +1,12 @@
 @if(hasLoaded == false){
-  <span class="justify-self-auto loading loading-ring loading-lg"></span>
+  <div class="h-screen flex items-center justify-center">
+    <span class="loading loading-ring loading-lg mx-auto my-auto">Loading page ...</span>
+  </div>
 }
 @else {
-<app-navabr></app-navabr>
+<nav>
+  <app-navabr></app-navabr>
+</nav>
 
-<router-outlet (deactivate)="reloadPage()"></router-outlet>
+<router-outlet></router-outlet>
 }

@@ -19,13 +19,10 @@ export class RegisterFormComponent {
 
   constructor(private users_service: UsersService,  private router: Router) { }
   onSubmit() {
-    console.log(this.registerForm.value);
     this.users_service.registerUser(this.registerForm.value)
     .subscribe(mess =>{
       if (Object.values(mess).toString() == "User created successfully") {
-        console.log(mess);
-        this.router.navigate(['home']);
-      
+        this.router.navigate(['/']);
       }
   
     });
