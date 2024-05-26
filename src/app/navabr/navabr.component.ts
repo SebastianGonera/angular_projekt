@@ -32,9 +32,9 @@ export class NavabrComponent {
   deleteAccount(){
     this.user_service.deleteUser().subscribe({
       next: (data)=>{
-        console.log(data);
         if(Object.values(data)){
           localStorage.clear();
+          this.router.navigate(['/']);
         }
       }
     });
@@ -43,5 +43,6 @@ export class NavabrComponent {
   logOut(){
     this.hasLogin = false;
     localStorage.clear();
+    this.router.navigate(['/']);
   }
 }
